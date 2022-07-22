@@ -7,6 +7,8 @@ def start():
 
 blockchain=start()
 
+st.text('Welcome to PyBlockchain!')
+
 record=st.text_input('Please input record')
 
 if st.button('Add block'): 
