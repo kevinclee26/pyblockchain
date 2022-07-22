@@ -2,6 +2,7 @@ import streamlit as st
 import PyBlockchain as pbc
 import hashlib
 import pandas as pd
+from datetime import datetime
 
 @st.cache(allow_output_mutation=True)
 def start(): 
@@ -19,7 +20,7 @@ if st.button('Add block'):
 	new_record=pbc.Record(buyer_id=buyer_id, seller_id=seller_id, shares=shares)
 	last_block=blockchain.chain[-1]
 	prev_hash=last_block.hash_block()
-	new_block=pbc.Block(record=new_record, prev_hash=prev_hash)
+	new_block=pbc.Block(record=new_record, trade_time=datetime.utcnow().strftime('%H:%M:%S') ,prev_hash=prev_hash)
 	blockchain.add_block(new_block)
 	st.balloons()
 
